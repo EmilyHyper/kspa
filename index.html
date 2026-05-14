@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Школа міністрів XIII</title>
+  <style>
+    @font-face {
+      font-family: 'Artegra Sans Extended';
+      src: url('./fonts/ArtegraSansExRegular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Artegra Sans Extended';
+      src: url('./fonts/ArtegraSansExMedium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Artegra Sans Extended';
+      src: url('./fonts/ArtegraSansExSemiBold.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Artegra Sans Extended';
+      src: url('./fonts/ArtegraSansExBold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #1F1F1F;
+      --white: #F4F4F4;
+      --blue: #9BC4E2;
+      --line: rgba(244, 244, 244, 0.58);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #3a3a3a;
+      color: var(--white);
+      font-family: 'Artegra Sans Extended', Arial, sans-serif;
+      font-synthesis: none;
+      letter-spacing: 0;
+    }
+
+    .page {
+      width: 720px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--bg);
+      padding: 36px 34px 80px;
+    }
+
+    .topline {
+      display: grid;
+      grid-template-columns: 74px 1fr 44px;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 58px;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: auto;
+      display: block;
+    }
+
+    .line {
+      height: 1px;
+      background: var(--line);
+    }
+
+    .year {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    .main-title {
+      margin: 0 0 64px;
+      text-align: center;
+      font-size: 31px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: 0.015em;
+    }
+
+    .module-box {
+      width: 548px;
+      height: 152px;
+      margin: 0 auto 76px;
+      position: relative;
+    }
+
+    .module-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      opacity: 0.9;
+    }
+
+    .module-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .module-label {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 22px;
+      letter-spacing: 0.035em;
+    }
+
+    .module-title {
+      color: var(--blue);
+      font-size: 31px;
+      font-weight: 400;
+      letter-spacing: 0.09em;
+    }
+
+    .day-block {
+      margin-top: 84px;
+    }
+
+    .first-day-block {
+      margin-top: 0;
+    }
+
+    .day-title {
+      margin: 0 0 38px;
+      color: var(--blue);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .schedule {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .time {
+      color: var(--blue);
+      font-size: 16px;
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: 0;
+      padding-top: 8px;
+      white-space: nowrap;
+    }
+
+    .content {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      position: relative;
+      min-height: 40px;
+    }
+
+    .simple {
+      color: var(--blue);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      padding-top: 2px;
+    }
+
+    .name {
+      font-size: 18px;
+      line-height: 1.15;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .name span {
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .desc {
+      margin: 0;
+      max-width: 470px;
+      font-size: 18px;
+      line-height: 1.42;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0;
+    }
+
+    .topic {
+      margin-top: 34px;
+      font-size: 18px;
+      line-height: 1.18;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      max-width: 540px;
+    }
+
+    .facebook {
+      position: absolute;
+      top: 12px;
+      right: 0;
+      color: var(--blue);
+      font-size: 11px;
+      line-height: 1;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      letter-spacing: 0.03em;
+      font-weight: 400;
+    }
+
+    .footer-mark {
+      margin-top: 120px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .footer-mark img {
+      width: 100%;
+      max-width: 860px;
+      opacity: 0.12;
+      display: block;
+      transform: translateY(20px);
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: 100%;
+        padding: 30px 24px 70px;
+      }
+
+      .module-box {
+        width: calc(100% - 48px);
+      }
+
+      .row {
+        grid-template-columns: 96px 1fr;
+      }
+
+      .desc {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topline">
+      <img class="brand-logo" src="./logo.svg" alt="КШДУ" />
+      <div class="line"></div>
+      <div class="year">2026</div>
+    </header>
+
+    <h1 class="main-title">ШКОЛА МІНІСТРІВ XIII</h1>
+
+    <section class="module-box">
+      <img class="module-frame" src="./group-2.svg" alt="" />
+      <div class="module-content">
+        <div class="module-label">ПРОГРАМА НАВЧАННЯ</div>
+        <div class="module-title">МОДУЛЬ 7</div>
+      </div>
+    </section>
+
+    <section class="day-block first-day-block">
+      <h2 class="day-title">ПʼЯТНИЦЯ&nbsp;&nbsp;15/05/2026</h2>
+
+      <div class="schedule">
+        <div class="row simple-row">
+          <div class="time">13:00–13:30</div>
+          <div class="content simple">WELCOME-КАВА</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">13:30–15:00</div>
+          <div class="content">
+            <a class="facebook" href="https://www.facebook.com/share/1DvRER5ATa/?mibextid=wwXIfr" target="_blank">FACEBOOK</a>
+            <div class="name">Лекція <span>Анатолія Амеліна</span></div>
+            <p class="desc">Виконавчий директор та співзасновник аналітичного центру “Український інститут майбутнього”, засновник консалтингової компанії Amelin Strategy, член ради Defence Alliance of Ukraine, незалежний член Наглядової ради “Укрзалізниця”</p>
+            <div class="topic">ТЕМА: ВІЗІЯ УКРАЇНИ 2035</div>
+          </div>
+        </div>
+
+        <div class="row simple-row">
+          <div class="time">15:00–16:00</div>
+          <div class="content simple">КАВА-БРЕЙК</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">16:00–17:30</div>
+          <div class="content">
+            <a class="facebook" href="https://www.facebook.com/serhiy.derkach" target="_blank">FACEBOOK</a>
+            <div class="name">Лекція <span>Інни Богатих</span></div>
+            <p class="desc">Юристка, заступниця міністра юстиції України (2024–2025 рр.), директорка департаменту санкційної політики Міністерства юстиції України (2022–2024 рр.), має більше 20 років досвіду роботи в банківській сфері</p>
+            <div class="topic">ТЕМА: САНКЦІЇ ЯК ІНСТРУМЕНТ ДЕРЖАВНОЇ ПОЛІТИКИ: УКРАЇНСЬКИЙ ТА МІЖНАРОДНИЙ ВИМІР</div>
+          </div>
+        </div>
+
+        <div class="row simple-row">
+          <div class="time">17:30–18:00</div>
+          <div class="content simple">КАВА-БРЕЙК</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">18:00–19:30</div>
+          <div class="content">
+            <a class="facebook" href="https://www.facebook.com/igor.smelyansky/" target="_blank">FACEBOOK</a>
+            <div class="name">Запрошений гість: <span>Ігор Смілянський</span></div>
+            <p class="desc">Генеральний директор АТ Укрпошта</p>
+            <div class="topic">ТЕМА: «ВИКЛИКИ МАСШТАБУ: УПРАВЛІННЯ, КОМАНДА І СТРАТЕГІЯ В УМОВАХ ПОСТІЙНОЇ КРИЗИ». ФОРМАТ Q*A</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <h2 class="day-title">СУБОТА&nbsp;&nbsp;16/05/2026</h2>
+
+      <div class="schedule">
+        <div class="row simple-row">
+          <div class="time">9:30–10:00</div>
+          <div class="content simple">WELCOME-КАВА</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">10:00–11:30</div>
+          <div class="content">
+            <a class="facebook" href="https://www.facebook.com/share/16TQcujt5U/?mibextid=wwXIfr" target="_blank">FACEBOOK</a>
+            <div class="name">Лекція <span>Дмитра Киселевського</span></div>
+            <p class="desc">Народний депутат України, заступник голови Комітету Верховної Ради з питань економічного розвитку. Відповідальний у Верховній Раді України за політику “Зроблено в Україні”</p>
+            <div class="topic">ТЕМА: ПЕРЕРОБНА ПРОМИСЛОВІСТЬ ЯК ПРІОРИТЕТ ЕКОНОМІЧНОГО ВІДНОВЛЕННЯ УКРАЇНИ</div>
+          </div>
+        </div>
+
+        <div class="row simple-row">
+          <div class="time">11:30–12:00</div>
+          <div class="content simple">ПЕРЕРВА</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">12:00–13:30</div>
+          <div class="content">
+            <a class="facebook" href="https://www.facebook.com/serhiy.derkach" target="_blank">FACEBOOK</a>
+            <div class="name">Лекція <span>Сергія Деркача</span></div>
+            <p class="desc">Заступник Міністра з розвитку громад та територій України</p>
+            <div class="topic">ТЕМА: ПУБЛІЧНО-ПРИВАТНЕ ПАРТНЕРСТВО: ІНСТРУМЕНТ ВІДБУДОВИ, ІНВЕСТИЦІЙ ТА ДОВГОСТРОКОВОГО РОЗВИТКУ</div>
+          </div>
+        </div>
+
+        <div class="row simple-row">
+          <div class="time">13:30–14:30</div>
+          <div class="content simple">ОБІД</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">14:30–16:00</div>
+          <div class="content">
+            <a class="facebook" href="https://www.facebook.com/rasim.babanly/?locale=uk_UA" target="_blank">FACEBOOK</a>
+            <div class="name">Лекція <span>Расіма Бабанли</span></div>
+            <p class="desc">Перший заступник керівника апарату Верховного Суду, доктор юридичних наук</p>
+            <div class="topic">ТЕМА: СУДОВА ВЛАДА В УКРАЇНІ: ЩО ПОТРІБНО ЗНАТИ ПРО СУЧАСНЕ І ПРО МАЙБУТНЄ</div>
+          </div>
+        </div>
+
+        <div class="row simple-row">
+          <div class="time">16:00–16:30</div>
+          <div class="content simple">КАВА-БРЕЙК</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">16:30–18:00</div>
+          <div class="content">
+            <a class="facebook" href="https://www.facebook.com/zeolga96/?locale=uk_UA" target="_blank">FACEBOOK</a>
+            <div class="name">Запрошений гість: <span>Ольга Смаглюк-Василевська</span></div>
+            <p class="desc">Народний депутат України IX скл., заступник голови Комітету, голова підкомітету з питань функціонування платіжних і інформаційних систем та запобігання легалізації доходів, одержаних злочинним шляхом</p>
+            <div class="topic">ТЕМА: ПЕПИ, БАНКИ І ФІНМОНІТОРИНГ: ЯК ПРАЦЮЄ СИСТЕМА ПОСИЛЕНОГО КОНТРОЛЮ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <h2 class="day-title">НЕДІЛЯ&nbsp;&nbsp;17/05/2026</h2>
+
+      <div class="schedule">
+        <div class="row simple-row">
+          <div class="time">9:30–10:00</div>
+          <div class="content simple">WELCOME-КАВА</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">10:00–12:00</div>
+          <div class="content">
+            <a class="facebook" href="https://www.facebook.com/profile.php?id=100000999568701" target="_blank">FACEBOOK</a>
+            <div class="name">Тренінг <span>Романа Кобця</span></div>
+            <div class="topic">ТЕМА: ДЕРЖАВНА ПОЛІТИКА (ТРЕНІНГ №13)</div>
+          </div>
+        </div>
+
+        <div class="row simple-row">
+          <div class="time">12:00–12:30</div>
+          <div class="content simple">КАВА-БРЕЙК</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">12:30–14:00</div>
+          <div class="content">
+            <div class="name">Симуляційна гра:</div>
+            <p class="desc">“Дебати в профільному комітеті Верховної Ради, щодо слухання та захисту реформи”</p>
+            <div class="topic">ВЕДУЧІ: ОЛЬГА БАБІЙ ТА ОЛЬГА ОНІЩУК</div>
+          </div>
+        </div>
+
+        <div class="row simple-row">
+          <div class="time">14:00–15:00</div>
+          <div class="content simple">ОБІД</div>
+        </div>
+
+        <div class="row lecture-row">
+          <div class="time">15:00–16:30</div>
+          <div class="content">
+            <div class="name">Запрошений гість: <span>Олексій Гончарук</span></div>
+            <p class="desc">Юрист і реформатор, який у 35 років став наймолодшим прем’єр-міністром в історії України. Очолював уряд у 2019–2020 роках після перемоги команди Володимира Зеленського.</p>
+            <div class="topic">ТЕМА ЗУСТРІЧІ: «ВІД ІДЕЇ ДО РІШЕННЯ: ЯК УХВАЛЮЮТЬСЯ ДЕРЖАВНІ РІШЕННЯ — ВІД УРЯДОВИХ ПРОЦЕСІВ ДО ВИКЛИКІВ ВІЙНИ»</div>
+          </div>
+        </div>
+
+        <div class="row simple-row">
+          <div class="time">16:30</div>
+          <div class="content simple">ФУРШЕТ</div>
+        </div>
+      </div>
+    </section>
+  <section class="footer-mark">
+      <img src="./kshdu-big.svg" alt="КШДУ" />
+    </section>
+  </main>
+</body>
+</html>
